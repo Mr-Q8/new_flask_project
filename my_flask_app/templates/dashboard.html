@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        {% if success %}
+        <p class="success">Successfully sent {{ followers_option }} followers to {{ tiktok_username }}!</p>
+        {% endif %}
+        
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        
+        <form method="POST" action="/dashboard">
+            <label for="tiktok_username">TikTok Username</label>
+            <input type="text" id="tiktok_username" name="tiktok_username" required>
+            
+            <label for="followers_option">Number of Followers</label>
+            <input type="number" id="followers_option" name="followers_option" required>
+            
+            <button type="submit">Send Followers</button>
+        </form>
+        
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
